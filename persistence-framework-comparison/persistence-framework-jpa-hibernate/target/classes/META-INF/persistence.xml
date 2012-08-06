@@ -1,0 +1,51 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="HibernatePersistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.cognizant.ccap.demo.associations.Continent</class>
+		<class>com.cognizant.ccap.demo.associations.Country</class>
+		<class>com.cognizant.ccap.demo.associations.HeadOfState</class>
+		<class>com.cognizant.ccap.demo.associations.Message</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost:3309/onlinedatabase?characterEncoding=UTF-8&amp;autoReconnect=true" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="welcome-1" />
+
+			<property name="hibernate.c3p0.min_size" value="5" />
+			<property name="hibernate.c3p0.max_size" value="20" />
+			<property name="hibernate.c3p0.timeout" value="300" />
+			<property name="hibernate.c3p0.max_statements" value="50" />
+			<property name="hibernate.c3p0.idle_test_period" value="3000" />
+
+			<property name="hibernate.default_entity_mode" value="pojo" />
+			<property name="hibernate.current_session_context_class"
+				value="thread" />
+			<property name="hibernate.generate_statistics" value="true" />
+			<property name="hibernate.max_fetch_depth" value="3" />
+			<property name="hibernate.order_inserts" value="true" />
+			<property name="hibernate.order_updates" value="true" />
+
+			<!-- <property name="hibernate.dbcp.maxActive">8</property> <property 
+				name="hibernate.dbcp.maxIdle">8</property> <property name="hibernate.dbcp.maxWait">500</property> 
+				<property name="hibernate.dbcp.whenExhaustedAction">1</property> <property 
+				name="hibernate.dbcp.testOnBorrow">true</property> <property name="hibernate.dbcp.testOnReturn">true</property> 
+				<property name="hibernate.dbcp.ps.maxActive">8</property> <property name="hibernate.dbcp.ps.maxIdle">8</property> 
+				<property name="hibernate.dbcp.ps.maxWait">1000*60*30</property> <property 
+				name="hibernate.dbcp.ps.whenExhaustedAction">1</property> <property name="hibernate.dbcp.validationQuery">select 
+				1</property> -->
+		</properties>
+	</persistence-unit>
+
+</persistence>

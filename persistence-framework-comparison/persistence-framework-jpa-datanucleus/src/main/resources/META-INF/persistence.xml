@@ -1,0 +1,33 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+	<persistence-unit name="DataNucleusPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+		<provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
+		<class>com.cognizant.ccap.demo.associations.Continent</class>
+		<class>com.cognizant.ccap.demo.associations.Country</class>
+		<class>com.cognizant.ccap.demo.associations.HeadOfState</class>
+		<class>com.cognizant.ccap.demo.associations.Message</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="datanucleus.storeManagerType" value="rdbms"/>
+			
+			<property name="datanucleus.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="datanucleus.ConnectionURL" value="jdbc:mysql://localhost:3306/onlinedatabase?characterEncoding=UTF-8&amp;autoReconnect=true"/>
+            <property name="datanucleus.ConnectionUserName" value="root"/>
+            <property name="datanucleus.ConnectionPassword" value="welcome-1"/>
+            
+			<property name="datanucleus.autoCreateSchema" value="false"/>
+            <property name="datanucleus.validateTables" value="false"/>
+            <property name="datanucleus.validateConstraints" value="false"/>
+
+			<property name="datanucleus.connectionPoolingType" value="C3P0"/>
+			<property name="datanucleus.connectionPool.minPoolSize" value="5" />
+			<property name="datanucleus.connectionPool.initialPoolSize" value="5" />
+			<property name="datanucleus.connectionPool.maxPoolSize" value="20" />
+			<property name="datanucleus.connectionPool.maxStatements" value="50" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>

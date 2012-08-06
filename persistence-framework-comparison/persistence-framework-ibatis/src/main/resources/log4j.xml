@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="threshold" value="TRACE" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%-5t] %-25d{ISO8601} [%-5p] %-5c [%L]  %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="debugAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="d:/temp/logs/debug.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{dd/MM/yyyy HH:mm:ss,SSS} [%-5p] - [%c][%M][%L] : %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="DEBUG" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+
+	<appender name="errorAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="d:/temp/logs/error.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{dd/MM/yyyy HH:mm:ss,SSS} [%-5p] - [%c][%M][%L] : %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+
+	<appender name="traceAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="d:/temp/logs/trace.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{dd/MM/yyyy HH:mm:ss,SSS} [%-5p] - [%c][%M][%L] : %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="TRACE" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+
+	<appender name="infoAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="d:/temp/logs/info.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{dd/MM/yyyy HH:mm:ss,SSS} [%-5p] - [%c][%M][%L] : %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="INFO" />
+			<param name="levelMax" value="ERROR" />
+		</filter>
+	</appender>
+
+	<!-- Mail adapter, recommended for production systems as it sends out email 
+		when errors level messages occur -->
+	<appender name="EMAIL" class="org.apache.log4j.net.SMTPAppender">
+		<param name="BufferSize" value="512" />
+		<param name="SMTPHost" value="${mail.server}" />
+		<param name="From" value="${mail.from.address}" />
+		<param name="To" value="${mail.admin}" />
+		<param name="Subject" value="[DSpace] Application message" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{ISO8601}]%n%n%%F:-5L%n%n-5p%n%n%c%n%n%m%n%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+
+
+	<logger name="com.enterprise">
+		<level value="DEBUG" />
+		<appender-ref ref="debugAppender" />
+		<appender-ref ref="traceAppender" />
+	</logger>
+
+	<logger name="org.apache">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="javax.faces">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.richfaces">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.ajax4jsf">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.hibernate">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.hibernate.type">
+		<level value="TRACE" />
+	</logger>
+	
+	<logger name="org.hibernate.bind">
+		<level value="DEBUG" />
+	</logger>
+	
+	<logger name="org.hibernate.SQL">
+		<level value="DEBUG" />
+	</logger>
+
+	<root>
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="infoAppender" />
+		<appender-ref ref="traceAppender" />
+		<appender-ref ref="debugAppender" />
+		<appender-ref ref="errorAppender" />
+	</root>
+</log4j:configuration>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/!svn/ver/31/trunk/hibernate-training/hibernate-training-I/src/main/java/com/training/hibernate/mapping/inheritance/type/com.cognizant.ccap.demo.inheritance.type.three
+END
+Student.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/!svn/ver/31/trunk/hibernate-training/hibernate-training-I/src/main/java/com/training/hibernate/mapping/inheritance/type/com.cognizant.ccap.demo.inheritance.type.three/Student.java
+END
+Person.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/!svn/ver/31/trunk/hibernate-training/hibernate-training-I/src/main/java/com/training/hibernate/mapping/inheritance/type/com.cognizant.ccap.demo.inheritance.type.three/Person.java
+END
+Teacher.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/!svn/ver/31/trunk/hibernate-training/hibernate-training-I/src/main/java/com/training/hibernate/mapping/inheritance/type/com.cognizant.ccap.demo.inheritance.type.three/Teacher.java
+END
